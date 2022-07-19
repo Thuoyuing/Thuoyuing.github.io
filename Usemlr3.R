@@ -180,8 +180,9 @@ data %>%
          education,
          smoking,
          As:Ti) %>% 
+  mutate(ptbirth = as.factor(ptbirth)) %>% 
   as_task_classif(target = "ptbirth",
-               id = "ptbirth") -> task.birthweight
+                  id = "ptbirth") -> task.birthweight
 
 learner.rf = lrn("classif.ranger",
                  predict_sets = c("train", "test"))
